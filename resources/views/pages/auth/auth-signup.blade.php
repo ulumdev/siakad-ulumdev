@@ -44,35 +44,63 @@
                                     <p class="text-muted">Get your free siakad account now</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form class="needs-validation" novalidate action="index">
-
+                                    {{-- <form class="needs-validation" novalidate method="POST" --}}
+                                    {{-- action="{{ route('register') }}"> --}}
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email <span
+                                            <label for="name" class="form-label">Name <span
                                                     class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="useremail"
-                                                placeholder="Enter email address" required>
-                                            <div class="invalid-feedback">
-                                                Please enter email
-                                            </div>
+                                            <input type="text"
+                                                class="form-control @error('name') is-invalid
+                                            @enderror"
+                                                id="name" name="name" placeholder="Enter name" required>
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username <span
+                                            <label for="email" class="form-label">Email <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="username"
-                                                placeholder="Enter username" required>
-                                            <div class="invalid-feedback">
-                                                Please enter username
-                                            </div>
+                                            <input type="email"
+                                                class="form-control @error('email') is-invalid
+                                            @enderror"
+                                                id="email" name="email" placeholder="Enter email address" required>
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-
                                         <div class="mb-2">
-                                            <label for="userpassword" class="form-label">Password <span
+                                            <label for="password" class="form-label">Password <span
                                                     class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" id="userpassword"
-                                                placeholder="Enter password" required>
-                                            <div class="invalid-feedback">
-                                                Please enter password
-                                            </div>
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid
+                                            @enderror"
+                                                id="password" name="password"
+                                                placeholder="Enter password (min. 8 character)" required>
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="password_confirmation" class="form-label">Password Confirmation<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password"
+                                                class="form-control @error('password_confirmation') is-invalid
+                                            @enderror"
+                                                id="password_confirmation" name="password_confirmation"
+                                                placeholder="Enter password confirmation" required>
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
 
                                         <div class="mb-4">

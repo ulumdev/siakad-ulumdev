@@ -44,12 +44,19 @@
                                     <p class="text-muted">Sign in to continue to SIAKAD.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="index">
-
+                                    <form action="{{ route('login') }}" method="POST">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username"
-                                                placeholder="Enter username">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text"
+                                                class="form-control @error('email') is-invalid
+                                            @enderror"
+                                                id="email" name="email" placeholder="Enter your email" autofocus>
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
 
                                         <div class="mb-3">
@@ -57,10 +64,17 @@
                                                 <a href="auth-pass-reset-basic" class="text-muted">Forgot
                                                     password?</a>
                                             </div> --}}
-                                            <label class="form-label" for="password-input">Password</label>
+                                            <label class="form-label" for="password">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5"
-                                                    placeholder="Enter password" id="password-input">
+                                                <input type="password"
+                                                    class="form-control pe-5 @error('password') is-invalid
+                                                @enderror"
+                                                    placeholder="Enter your password" id="password" name="password">
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
                                                     type="button" id="password-addon"><i
@@ -127,4 +141,16 @@
     <script src="{{ URL::asset('assets/libs/particles.js/particles.js.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/particles.app.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/password-addon.init.js') }}"></script>
+
+    <script>
+        document.getElementById('password-addon').addEventListener('click', function() {
+            var password = document.getElementById("password");
+
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        });
+    </script>
 @endsection
