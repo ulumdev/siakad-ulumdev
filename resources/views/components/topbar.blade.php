@@ -32,7 +32,7 @@
                     </span>
                 </button>
 
-                <!-- App Search-->
+                {{-- <!-- App Search-->
                 <form class="app-search d-none d-md-block">
                     <div class="position-relative">
                         <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
@@ -118,7 +118,7 @@
                                     class="ri-arrow-right-line ms-1"></i></a>
                         </div>
                     </div>
-                </form>
+                </form> --}}
             </div>
 
             <div class="d-flex align-items-center">
@@ -468,19 +468,21 @@
                     </div>
                 </div> --}}
 
-                <div class="ms-1 header-item d-none d-sm-flex">
+                {{-- BUTTON FULLSCREEN --}}
+                {{-- <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                         data-toggle="fullscreen">
                         <i class='bx bx-fullscreen fs-22'></i>
                     </button>
-                </div>
+                </div> --}}
 
-                <div class="ms-1 header-item d-none d-sm-flex">
+                {{-- BUTTON THEME LIGHT-DARK --}}
+                {{-- <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button"
                         class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
-                </div>
+                </div> --}}
 
                 {{-- DROPDOWN NOTIFICATIONS --}}
                 {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item">

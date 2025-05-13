@@ -59,7 +59,6 @@
                     </div>
                 </li> <!-- end Dashboard Menu -->
 
-
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarApps">
@@ -67,6 +66,9 @@
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link">Users</a>
+                            </li>
                             <li class="nav-item">
                                 <a href="apps-calendar" class="nav-link">calendar</a>
                             </li>

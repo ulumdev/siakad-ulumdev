@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(200)->create();
 
         User::create([
             'name' => 'Ulumdev Admin',
@@ -22,6 +22,13 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('siakad1234'),
             'remember_token' => Str::random(10),
+            'role' => 'admin',
+            'phone' => '081234567890',
+            'address' => 'Jl. Admin No. 1',
+            'city' => 'Jakarta',
+            'state' => 'DKI Jakarta',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

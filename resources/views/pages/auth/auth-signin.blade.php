@@ -44,7 +44,7 @@
                                     <p class="text-muted">Sign in to continue to SIAKAD.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="{{ route('login') }}" method="POST">
+                                    <form action="{{ route('login') }}" method="POST" class="needs-validation">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
@@ -141,6 +141,8 @@
     <script src="{{ URL::asset('assets/libs/particles.js/particles.js.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/particles.app.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/password-addon.init.js') }}"></script>
+
+    <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 
     <script>
         document.getElementById('password-addon').addEventListener('click', function() {

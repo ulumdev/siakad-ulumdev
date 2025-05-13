@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('pages.app.index');
     })->name('home');
+    Route::resource('users', UserController::class);
 });
 
 // Route::get('home', [HomeController::class, 'home'])->name('home');
