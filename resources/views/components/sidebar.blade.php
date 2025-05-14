@@ -60,14 +60,18 @@
                 </li> <!-- end Dashboard Menu -->
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarApps">
+                    <a class="nav-link menu-link {{ request()->routeIs(['users.*', 'params.*']) ? '' : 'collapsed' }}"
+                        href="#sidebarApps" data-bs-toggle="collapse" role="button"
+                        aria-expanded="{{ request()->routeIs(['users.*', 'params.*']) ? 'true' : 'false' }}"
+                        aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span>apps</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarApps">
+                    <div class="collapse menu-dropdown {{ request()->routeIs(['users.*', 'params.*']) ? 'show' : '' }}"
+                        id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link">Users</a>
+                                <a href="{{ route('users.index') }}"
+                                    class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">Users</a>
                             </li>
                             <li class="nav-item">
                                 <a href="apps-calendar" class="nav-link">calendar</a>

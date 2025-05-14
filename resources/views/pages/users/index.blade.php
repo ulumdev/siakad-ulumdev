@@ -61,7 +61,11 @@
                         </div>
                     </div>
                 </div> --}}
+                {{-- <div class="card-body">
+                    @include('components.alerts')
+                </div> --}}
                 <div class="card-body border-bottom-dashed border-bottom">
+                    @include('components.alerts')
                     <div class="row g-4 align-items-center">
                         <div class="col-md-4">
                             {{-- <form action="{{ route('users.index') }}" method="GET">
@@ -195,7 +199,7 @@
                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                     <li class="list-inline-item edit" data-bs-toggle="tooltip"
                                                         data-bs-trigger="hover" data-bs-placement="top" title="Edit">
-                                                        <a href="#showModal" data-bs-toggle="modal"
+                                                        <a href="{{ route('users.edit', $data->id) }}"
                                                             class="text-primary d-inline-block edit-item-btn">
                                                             <i class="ri-pencil-fill fs-16"></i>
                                                         </a>
@@ -351,6 +355,8 @@
 @endsection
 
 @section('script')
+    {{-- <script src="{{ URL::asset('assets/js/app.min.js') }}"></script> --}}
+
     <script>
         function clearSearch() {
             document.getElementById('searchInput').value = '';
@@ -361,6 +367,4 @@
     <script src="{{ URL::asset('/assets/libs/list.pagination.js/list.pagination.js.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/crm-leads.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
-
-    <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
 @endsection

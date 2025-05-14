@@ -44,7 +44,7 @@
                                     <p class="text-muted">Sign in to continue to SIAKAD.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="{{ route('login') }}" method="POST" class="needs-validation">
+                                    <form action="{{ route('login') }}" method="POST" class="needs-validation" >
                                         @csrf
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>

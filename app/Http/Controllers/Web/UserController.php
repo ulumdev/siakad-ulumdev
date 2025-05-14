@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -29,7 +31,7 @@ class UserController extends Controller
             ->when($request->input('search'), function ($query, $search) {
                 return $query->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
-            })->paginate(10);
+            })->paginate(10)->onEachSide(1);
 
 
         // $users = DB::table('users')
@@ -65,9 +67,21 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        // dd($request->all());
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'phone' => $request['phone'],
+            'role' => $request['role'],
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
 
     /**
@@ -83,15 +97,21 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('pages.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        // dd($request->all());
+        $validatedData = $request->validated();
+        $user->update($validatedData);
+        // dd($user);
+
+        return redirect()->route('users.index')->with('info', 'User updated successfully.');
     }
 
     /**
