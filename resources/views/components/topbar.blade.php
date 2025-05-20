@@ -32,7 +32,7 @@
                     </span>
                 </button>
 
-                {{-- <!-- App Search-->
+                <!-- App Search-->
                 <form class="app-search d-none d-md-block">
                     <div class="position-relative">
                         <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
@@ -118,7 +118,7 @@
                                     class="ri-arrow-right-line ms-1"></i></a>
                         </div>
                     </div>
-                </form> --}}
+                </form>
             </div>
 
             <div class="d-flex align-items-center">

@@ -13,5 +13,6 @@
     @endcomponent
 @endsection
 @section('script')
-    <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+    {{-- <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 @endsection

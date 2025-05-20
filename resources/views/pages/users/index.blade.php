@@ -97,7 +97,7 @@
                                 {{-- <button type="button" class="btn btn-info" data-bs-toggle="offcanvas"
                                     href="#offcanvasExample"><i class="ri-filter-3-line align-bottom me-1"></i>
                                     Fliters</button> --}}
-                                <a href="{{ route('users.create') }}" class="btn btn-success add-btn">
+                                <a href="{{ route('users.create') }}" class="btn btn-secondary add-btn">
                                     <i class="ri-add-line align-bottom me-1"></i> Add New User
                                 </a>
                                 {{-- <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
@@ -177,6 +177,7 @@
                                 <thead class="table-light text-muted">
                                     <tr>
 
+                                        <th class="sort">NO.</th>
                                         <th class="sort" data-sort="customer_name">Name</th>
                                         <th class="sort" data-sort="email">Email</th>
                                         <th class="sort" data-sort="phone">Phone</th>
@@ -188,6 +189,7 @@
                                 <tbody class="list form-check-all">
                                     @foreach ($users as $data)
                                         <tr>
+                                            <td class="number">{{ $loop->iteration }}</td>
                                             <td class="customer_name">{{ $data->name }}</td>
                                             <td class="email">{{ $data->email }}</td>
                                             <td class="phone">{{ $data->phone }}</td>
@@ -207,7 +209,8 @@
                                                     <li class="list-inline-item" data-bs-toggle="tooltip"
                                                         data-bs-trigger="hover" data-bs-placement="top" title="Remove">
                                                         <a class="text-danger d-inline-block remove-item-btn"
-                                                            data-bs-toggle="modal" href="#deleteRecordModal">
+                                                            data-bs-toggle="modal" data-user-id="{{ $data->id }}"
+                                                            href="#deleteRecordModal">
                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                         </a>
                                                     </li>
@@ -346,6 +349,10 @@
                         </div>
                     </div>
                     <!--end modal -->
+                    <form id="deleteUserForm" method="POST" style="display:none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 </div>
             </div>
 
@@ -362,9 +369,36 @@
             document.getElementById('searchInput').value = '';
             document.querySelector('form[action="{{ route('users.index') }}"]').submit();
         }
+
     </script>
+
+    <script src="{{ asset('/assets/libs/list.js/list.js.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/list.pagination.js/list.pagination.js.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/pages/crm-leads.init.js') }}"></script>
+    <script src="{{ asset('/assets/js/app.min.js') }}"></script>
+
     {{-- <script src="{{ URL::asset('/assets/libs/list.js/list.js.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/list.pagination.js/list.pagination.js.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/crm-leads.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
+
+    <script>
+        let userIdToDelete = null;
+
+        // When delete button is clicked, store user id
+        document.querySelectorAll('.remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                userIdToDelete = this.getAttribute('data-user-id');
+            });
+        });
+
+        // When confirm delete in modal is clicked
+        document.getElementById('delete-record').addEventListener('click', function () {
+            if (userIdToDelete) {
+                const form = document.getElementById('deleteUserForm');
+                form.action = "{{ url('users') }}/" + userIdToDelete;
+                form.submit();
+            }
+        });
+    </script>
 @endsection

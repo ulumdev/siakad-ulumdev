@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> --}}
     <title>@yield('title') | Admin & Dashboard</title>
     {{-- App Favicon --}}
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon">
@@ -17,7 +17,7 @@
         #back-to-top {
             position: fixed;
             bottom: 40px;
-            right: 28px;
+            right: 25px;
             transition: all .5s ease;
             display: none;
             z-index: 1000
@@ -43,23 +43,20 @@
     <!-- ============================================================== -->
     <div class="main-content">
         <div class="page-content">
-            <!-- Start content -->
             <div class="container-fluid">
                 @yield('content')
-            </div> <!-- content -->
+            </div>
+            <!-- container-fluid -->
         </div>
+        <!-- End Page-content -->
         @include('components.footer')
     </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
+    <!-- end main content-->
 </div>
-<!-- END wrapper -->
+<!-- END layout-wrapper -->
 
 <!-- Right Sidebar -->
-<!--start back-to-top-->
 @include('layouts.customizer')
-<!--end back-to-top-->
 <!-- END Right Sidebar -->
 
 @include('layouts.vendor-scripts')

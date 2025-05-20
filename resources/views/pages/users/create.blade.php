@@ -243,9 +243,15 @@
 
     @section('script')
         {{-- JS --}}
-        {{-- <script src="{{ URL::asset('assets/js/app.min.js') }}"></script> --}}
+        {{-- <script src="{{ URL::asset('assets/js/app.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/pages/password-addon.init.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
+        <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script> --}}
+
+
+        {{-- JS --}}
+        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/password-addon.init.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
 
         <script>
             document.getElementById('password-addon').addEventListener('click', function() {
